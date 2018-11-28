@@ -101,20 +101,20 @@ resource "azurerm_virtual_machine" "main" {
         version   = "latest"
     }
     storage_os_disk {
-        name              = "${var.name_prefix}_stdisk1"
+        name              = "${var.name_prefix}_disk1"
         caching           = "ReadWrite"
         create_option     = "FromImage"
         managed_disk_type = "Standard_LRS"
     }
     os_profile {
         computer_name  = "${var.name_prefix}-hostname"
-        admin_username = "azuser"
+        admin_username = "${var.user_name}"
     }
     os_profile_linux_config {
         disable_password_authentication = true
         ssh_keys {
             path     = "/home/azuser/.ssh/authorized_keys"
-            key_data = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCqP/Lc3EcplpkzSBG3TLLnyS1YQe2cYj2YFo5eFvXJtei5cQNq2fc43pNzplNinyQhy02/CkWPkupd+p9oBUiTPKzNkdfKBUt1BXuOG9SXK40zf1Ih9Bqg3c98hNSsiyoRW/qC0hfJhfQtJoU8Id+VPkhYtbJ1GzYAXyhSUGmPDD3GB8X7SBvW0VzFcsAysg26WHFxUk9EdZ4stAtoDdmBf0kiAnmkZvgF8rZmX9DAZdOT9ohbar8ulr1zfCBEBzWeUwTZm3x1C63Q+qinFwfyDfdy03hXLaE7RXgEHD382WsfXhum1osM5jGYbSxfa2tnOuCvTv7Cxn4HDZ2LRMDJ charlie@roffe.net"
+            key_data = "${var.pub_key}"
         }
     }
   tags {
