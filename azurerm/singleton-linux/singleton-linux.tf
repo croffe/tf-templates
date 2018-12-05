@@ -1,5 +1,5 @@
 # Azure Resource Manager provider
-provider "azurerm" {
+provider "azurerm" main {
 
 }
 
