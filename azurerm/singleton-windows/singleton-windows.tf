@@ -1,8 +1,3 @@
-# Azure Resource Manager provider
-provider "azurerm" {
-
-}
-
 resource "azurerm_resource_group" "main" {
     name = "${var.name_prefix}-resources"
     location = "eastus"
